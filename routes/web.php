@@ -11,7 +11,7 @@ Route::get('/', Dashboard::class);
 Route::prefix('ambientes')->group(function(){
     Route::get('/index', AmbienteIndex::class)->name('ambientes.index');
     Route::get('/create', AmbienteCreate::class)->name('ambientes.create');
-    Route::get('/edit', AmbienteEdit::class)->name('ambientes.edit');
+    Route::get('edit/{id}', AmbienteEdit::class)->name('ambientes.edit');
 
 
 });
