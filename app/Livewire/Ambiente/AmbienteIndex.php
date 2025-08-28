@@ -43,4 +43,8 @@ class AmbienteIndex extends Component
         session()->flash('message', 'Ambiente deletado com sucesso!');
         
     }
+
 }
+
+}
+

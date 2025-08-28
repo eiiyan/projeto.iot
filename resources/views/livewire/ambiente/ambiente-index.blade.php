@@ -2,7 +2,11 @@
     
     <div class="row mb-3">
         <div class="col-md-6">
+
+            <strong><h2><i class="bi bi-shop-window"></i> Ambientes</strong></h2>
+
             <strong><h2>Ambientes</strong></h2>
+
         </div>
     </div>
 
@@ -16,15 +20,25 @@
         </div>
 
         <div class="col-md-9 text-end ">
+
+            <a href="{{ route('ambientes.create') }}" class="btn btn-primary text-light rounded-pill">
+
             <a href="{{ route('ambientes.create') }}" class="btn btn-warning" style="color: #beedf4" >
+
                 <strong><i class="bi bi-plus-circle"></i> Novo Usuário</strong>
             </a>
         </div>
     </div>
     
+
+    <div class="card bg-primary">
+        
+        <div class="card-body" style="background-color: #04bbdf">
+
     <div class="card bg-warning rounded-top-0">
         
         <div class="card-body" style="background-color: blue">
+
 
             @if(session()->has('message'))
                 <div class="alert alert-success  alert-dismissible fade show" role="alert">
@@ -76,11 +90,21 @@
                                 <td>
             
 
+                                    <a href="{{ route('ambientes.edit', $ambiente->id) }}" 
+                                        class="btn btn-sm btn-primary text-light rounded-pill" style="background-color: #04bbdf">
+                                        <strong>Editar</strong>
+                                    </a>
+
+                                    <button wire:click="delete({{ $ambiente->id }})" 
+                                    class="btn btn-sm btn-primary text-light rounded-pill" onclick="return confirm('Tem certeza?')" style="background-color: #01356d">
+
+
                                     <a href="{{ route('ambientes.edit', $ambiente->id) }}" class="btn btn-sm btn-warning text-light rounded-pill">
                                         <strong>Editar</strong>
                                     </a>
 
                                     <button wire:click="delete({{ $ambiente->id }})" class="btn btn-sm btn-danger text-light rounded-pill" onclick="return confirm('Tem certeza?')">
+
                                         <strong>Deletar</strong>
                                     </button>
                                 </td>
