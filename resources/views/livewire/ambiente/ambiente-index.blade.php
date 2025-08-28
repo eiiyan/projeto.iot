@@ -1,11 +1,10 @@
 <div class="container mt-4">
+    
     <div class="row mb-3">
         <div class="col-md-6">
-            
+            <strong><h2>Ambientes</strong></h2>
         </div>
-
     </div>
-
 
     <div class="row mb-3">
         <div class="col-md-3">
@@ -16,91 +15,87 @@
             </div>
         </div>
 
-
         <div class="col-md-9 text-end ">
-            <a href="{{ route('ambientes.create') }}" class="btn btn-warning" style="color: white">
-                <strong><i class="bi bi-plus-circle"></i> Novo Ambiente</strong>
+            <a href="{{ route('ambientes.create') }}" class="btn btn-warning" style="color: #beedf4" >
+                <strong><i class="bi bi-plus-circle"></i> Novo Usuário</strong>
             </a>
         </div>
     </div>
+    
+    <div class="card bg-warning rounded-top-0">
+        
+        <div class="card-body" style="background-color: blue">
 
-    <div class="card bg-warning">
-        <div class="card-body">
-            <div class="row mb-3">
-
-            </div>
-
-            @if (session()->has('error'))
-                <div class="alert alert-danger alert-dismissible fade show">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if (session()->has('success'))
-                <div class="alert alert-dismissible alert-success fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if (session()->has('message'))
-                <div class="alert alert-dismissible alert-success fade show" role="alert">
+            @if(session()->has('message'))
+                <div class="alert alert-success  alert-dismissible fade show" role="alert">
                     {{ session('message') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
 
+            @if(session()->has('notUpdate'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
 
+            @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
-            <div class="table-resposive">
+            @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+            <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Status</th>
-                            
+                            <th>Ações</th>
                         </tr>
-
                     </thead>
                     <tbody>
-                        @forelse ($ambientes as $ambientes)
+                        @forelse($ambientes as $ambiente)
                             <tr>
+                                <td>{{ $ambiente->id }}</td>
                                 <td>{{ $ambiente->nome }}</td>
                                 <td>{{ $ambiente->descricao }}</td>
                                 <td>{{ $ambiente->status }}</td>
+                                
                                 <td>
+            
 
-                                    <a href="{{ route('ambientes.edit', $ambiente->id) }}"
-                                        class="btn btn-sm btn-warning rounded-pill" style="color: white">
-                                        <strong>
-                                            <h7>Editar</h7>
-                                        </strong>
+                                    <a href="{{ route('ambientes.edit', $ambiente->id) }}" class="btn btn-sm btn-warning text-light rounded-pill">
+                                        <strong>Editar</strong>
                                     </a>
-                                    <button wire:click="delete({{ $ambiente->id }})"
-                                        class="btn btn-sm btn-danger rounded-pill "style="color: white"
-                                        onclick="return confirm('Tem certeza?')">
-                                        <strong>
-                                            <h7>Deletar</h7>
-                                        </strong>
-                                    </button>
 
+                                    <button wire:click="delete({{ $ambiente->id }})" class="btn btn-sm btn-danger text-light rounded-pill" onclick="return confirm('Tem certeza?')">
+                                        <strong>Deletar</strong>
+                                    </button>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">Nenhum ambiente encontrado</td>
+                                <td colspan="7" class="text-center">Nenhum ambiente encontrado.</td>
                             </tr>
                         @endforelse
-
                     </tbody>
                 </table>
-
             </div>
+
             <div class="mt-3">
                 {{ $ambientes->links() }}
-
             </div>
         </div>
     </div>

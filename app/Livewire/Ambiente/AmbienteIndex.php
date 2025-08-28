@@ -9,8 +9,8 @@ use Livewire\WithPagination;
 
 class AmbienteIndex extends Component
 {
-
-     use WithPagination;
+    public $ambiente;
+    use WithPagination;
 
 
     public $search = '';
@@ -18,12 +18,10 @@ class AmbienteIndex extends Component
 
     protected $queryString = [
         'search' => ['except' => ''],
-        'perPage' => ['except' => 10],
+        'perPage' => ['except' => 10]
     ];
 
-
     public function render()
-
     {
         $ambientes = Ambiente::where('nome', 'like', "%{$this->search}%")
             ->orWhere('descricao', 'like', "%{$this->search}%")
@@ -35,13 +33,14 @@ class AmbienteIndex extends Component
 
     public function delete($id)
     {
+
         
-        $ambiente = Ambiente::find($id);
-        $user = User::find($ambiente->user_id);
-        $ambiente->delete();
-        $user->delete();
+        $ambiente = Ambiente::find($id); 
+        $user = User::find($ambiente->user_id); 
+        $ambiente->delete(); 
+        
+        
         session()->flash('message', 'Ambiente deletado com sucesso!');
+        
     }
-
 }
-
