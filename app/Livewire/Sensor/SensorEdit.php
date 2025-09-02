@@ -9,7 +9,7 @@ use Livewire\Component;
 class SensorEdit extends Component
 {
 
-    public $sensor;
+    public $sensorId;
     public $codigo;
     public $tipo;
     public $descricao;
@@ -26,11 +26,9 @@ class SensorEdit extends Component
         }
 
         else{
-        $sensor = Sensor::find($id);
-
-        
+       $this->sensorId =  $sensor->id;
         $this->codigo = $sensor->codigo;
-         $this->tipo = $sensor->tipo;
+        $this->tipo = $sensor->tipo;
         $this->descricao = $sensor->descricao;
         $this->status = $sensor->status;
     }
@@ -40,7 +38,8 @@ class SensorEdit extends Component
    public function update()
     {
 
-        $sensor = Sensor::findOrFail($this->sensor->id);
+
+        $sensor = Sensor::find($this->sensorId);
 
         if ($sensor) {
 
