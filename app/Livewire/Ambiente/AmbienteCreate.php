@@ -51,7 +51,7 @@ class AmbienteCreate extends Component
 
 
 
-        session()->flash('success', 'Cadastro realizado com sucesso!');
+        session()->flash('success', 'Ambiente cadastrado com sucesso!');
         return redirect()->route('ambientes.index');
     }
 
