@@ -17,7 +17,11 @@
 
         <div class="col-md-9 text-end ">
             <a href="{{ route('ambientes.create') }}" class="btn btn-primary text-light rounded-pill">
+
                 <strong><i class="bi bi-plus-circle"></i> Novo Ambiente</strong>
+
+                <strong><i class="bi bi-plus-circle"></i> Novo Usuário</strong>
+
             </a>
         </div>
     </div>
@@ -101,3 +105,5 @@
         </div>
     </div>
 </div>
+
+
