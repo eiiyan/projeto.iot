@@ -30,7 +30,6 @@ class SensorCreate extends Component
         'tipo.max'=> 'o campo requer no máximo 80 caracteres',
         'status.required' => 'o campo é obrigatório',
        
-       
     ];
 
 

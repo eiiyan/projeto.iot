@@ -4,7 +4,7 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <strong>
-                    <h2><i class="bi bi-database"></i>Sensores
+                    <h2><i class="bi bi-phone-vibrate"></i> Sensores
                 </strong></h2>
             </div>
         </div>
@@ -19,12 +19,25 @@
                 </div>
             </div>
 
+           
             <div class="col-md-9 text-end ">
                 <a href="{{ route('sensores.create') }}" class="btn btn-primary text-light rounded-pill">
                     <strong><i class="bi bi-plus-circle"></i> Novo Sensor</strong>
                 </a>
             </div>
         </div>
+
+        
+                            <div class="col-md-3 mt-1">
+                                <select wire:model.live="perPage" class="form-select" wire:model.live="search">
+                                    <option value="15">15 por página</option>
+                                    <option value="25">25 por página</option>
+                                    <option value="50">50 por página</option>
+                                    <option value="100">100 por página</option>
+                                </select>
+                            </div>
+                <br>
+        
 
         <div class="card bg-primary">
 
@@ -109,6 +122,8 @@
             </div>
         </div>
     </div>
+
+    
 
 
 
