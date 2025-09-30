@@ -1,8 +1,9 @@
-<div class="container mt-4">
+<div>
+   <div class="container mt-4">
     
     <div class="row mb-3">
         <div class="col-md-6">
-            <strong><h2><i class="bi bi-shop-window"></i> Ambientes</strong></h2>
+            <strong><h2><i class="bi bi-shop-window"></i> Registros</strong></h2>
         </div>
     </div>
 
@@ -10,20 +11,11 @@
         <div class="col-md-3">
             <div class="input-group align-items-center p-1 bg-body-tertiary rounded-pill">
                 <input type="search" wire:model.debounce.300ms="search" class="form-control float-end mx-2 bg-transparent border border-0"
-                    style="widht: 230px" placeholder="Buscar ambientes..." wire:model.live="search">
+                    style="widht: 230px" placeholder="Buscar registros..." wire:model.live="search">
                     <i class="bi bi-search text-secondary p-1" id="toggleIcon"></i>
             </div>
         </div>
 
-        <div class="col-md-9 text-end ">
-            <a href="{{ route('ambientes.create') }}" class="btn btn-primary text-light rounded-pill">
-
-                <strong><i class="bi bi-plus-circle"></i> Novo Ambiente</strong>
-
-                <strong><i class="bi bi-plus-circle"></i> Novo Usuário</strong>
-
-            </a>
-        </div>
     </div>
     
     <div class="card bg-primary">
@@ -63,28 +55,26 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nome</th>
-                            <th>Descrição</th>
-                            <th>Status</th>
+                            <th>Sensor_ID</th>
+                            <th>Valor</th>
+                            <th>Unidade</th>
+                            <th>Data e Hora</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($ambientes as $ambiente)
+                        @forelse($registros as $registro)
                             <tr>
-                                <td>{{ $ambiente->id }}</td>
-                                <td>{{ $ambiente->nome }}</td>
-                                <td>{{ $ambiente->descricao }}</td>
-                                <td>{{ $ambiente->status }}</td>
+                                <td>{{ $registro->id }}</td>
+                                <td>{{ $registro->sensor_id}}</td>
+                                <td>{{ $registro->valor }}</td>
+                                <td>{{ $registro->unidade }}</td>
+                                <td>{{ $registro->data_hora }}</td>
                                 
                                 <td>
             
-                                    <a href="{{ route('ambientes.edit', $ambiente->id) }}" 
-                                        class="btn btn-sm btn-primary text-light rounded-pill" style="background-color: #04bbdf">
-                                        <strong>Editar</strong>
-                                    </a>
 
-                                    <button wire:click="delete({{ $ambiente->id }})" 
+                                    <button wire:click="delete({{ $registro->id }})" 
                                     class="btn btn-sm btn-primary text-light rounded-pill" onclick="return confirm('Tem certeza?')" style="background-color: #01356d">
                                         <strong>Deletar</strong>
                                     </button>
@@ -92,7 +82,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">Nenhum ambiente encontrado.</td>
+                                <td colspan="7" class="text-center">Nenhum registro encontrado.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -100,10 +90,11 @@
             </div>
 
             <div class="mt-3">
-               
+                
             </div>
         </div>
     </div>
 </div>
+
 
 
