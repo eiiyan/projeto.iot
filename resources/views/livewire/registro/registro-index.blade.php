@@ -16,16 +16,18 @@
             </div>
         </div>
 
-        
-                            <div class="col-md-3 mt-1">
-                                <select wire:model.live="perPage" class="form-select" wire:model.live="search">
-                                    <option value="15">15 por página</option>
-                                    <option value="25">25 por página</option>
-                                    <option value="50">50 por página</option>
-                                    <option value="100">100 por página</option>
-                                </select>
-                            </div>
-                <br>
+         <div class="col-md-3 mt-3">
+            <select wire:model.live="perPage" class="form-select border border-secondary rounded shadow-sm">
+                <option value="15">15 por página</option>
+                <option value="25">25 por página</option>
+                <option value="50">50 por página</option>
+                <option value="100">100 por página</option>
+            </select>
+        </div>
+
+        <br>
+
+
 
     </div>
     
