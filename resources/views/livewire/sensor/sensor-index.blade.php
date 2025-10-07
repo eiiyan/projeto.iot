@@ -9,6 +9,9 @@
             </div>
         </div>
 
+        
+        
+
         <div class="row mb-3">
             <div class="col-md-3">
                 <div class="input-group align-items-center p-1 bg-body-tertiary rounded-pill">
@@ -18,7 +21,16 @@
                     <i class="bi bi-search text-secondary p-1" id="toggleIcon"></i>
                 </div>
             </div>
-
+            
+        <div class="col-md-3 mt-3">
+            <select wire:model.live="perPage" class="form-select border border-primary rounded shadow"
+                style="color:black">
+                <option value="15">15 por página</option>
+                <option value="25">25 por página</option>
+                <option value="50">50 por página</option>
+                <option value="100">100 por página</option>
+            </select>
+        </div>
 
             <div class="col-md-9 text-end ">
                 <a href="{{ route('sensores.create') }}" class="btn btn-primary text-light rounded-pill">
@@ -27,20 +39,8 @@
             </div>
         </div>
 
-
-        <div class="col-md-3 mt-3">
-            <select wire:model.live="perPage" class="form-select border border-secondary rounded shadow-sm">
-                <option value="15">15 por página</option>
-                <option value="25">25 por página</option>
-                <option value="50">50 por página</option>
-                <option value="100">100 por página</option>
-            </select>
-        </div>
-
         <br>
-
-
-
+        
         <div class="card bg-primary">
 
             <div class="card-body" style="background-color: #04bbdf">
