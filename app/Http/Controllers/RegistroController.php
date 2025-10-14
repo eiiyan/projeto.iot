@@ -16,7 +16,7 @@ class RegistroController extends Controller
     }
     public function store(RegistroRequest $request)
     {
-        $sensor = Sensor::where('codigo', $request->cod_sensor)->first();
+        $sensor = Sensor::where('codigo', $request->codigo)->first();
 
         if (!$sensor) {
             return response()->json(['error' => 'sensor não encontrado'], 404);

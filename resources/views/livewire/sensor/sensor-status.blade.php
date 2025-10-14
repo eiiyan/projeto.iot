@@ -10,22 +10,18 @@
         </div>
 
         <div class="row mb-3 d-flex align-items-center justify-content-between">
-            
+
             <div class="col-md-4 col-sm-12">
                 <div class="input-group align-items-center p-1 bg-body-tertiary rounded-pill">
-                    <input type="search" 
-                        wire:model.debounce.300ms="search"
-                        class="form-control float-end mx-2 bg-transparent border border-0" 
-                        placeholder="Buscar sensores..." 
-                        wire:model.live="search"
-                    >
+                    <input type="search" wire:model.debounce.300ms="search"
+                        class="form-control float-end mx-2 bg-transparent border border-0"
+                        placeholder="Buscar sensores..." wire:model.live="search">
                     <i class="bi bi-search text-secondary p-1" id="toggleIcon"></i>
                 </div>
             </div>
-            
+
             <div class="col-md-3 col-sm-6 mt-3 mt-md-0">
-                <select wire:model.live="perPage" 
-                    class="form-select border border-primary rounded shadow"
+                <select wire:model.live="perPage" class="form-select border border-primary rounded shadow"
                     style="color:black">
                     <option value="15">15 por página</option>
                     <option value="25">25 por página</option>
@@ -39,9 +35,7 @@
                     <strong><i class="bi bi-plus-circle"></i> Novo Sensor</strong>
                 </a>
             </div>
-            
         </div>
-        
         <br>
         <div class="card bg-primary">
             <div class="card-body" style="background-color: #04bbdf">
@@ -78,36 +72,42 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
+
                                 <th>Código</th>
                                 <th>Tipo</th>
-                                <th>Descrição</th>
                                 <th>Status</th>
-                                <th>Ações</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($sensores as $sensor)
                             <tr>
-                                <td>{{ $sensor->id }}</td>
+
                                 <td>{{ $sensor->codigo }}</td>
                                 <td>{{ $sensor->tipo }}</td>
-                                <td>{{ $sensor->descricao }}</td>
-                                <td>{{ $sensor->status }}</td>
 
-                                <td>
 
-                                    <a href="{{ route('sensores.edit', $sensor->id) }}"
-                                        class="btn btn-sm btn-primary text-light rounded-pill"
-                                        style="background-color: #04bbdf">
-                                        <strong>Editar</strong>
-                                    </a>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
 
-                                    <button wire:click="delete({{ $sensor->id }})"
-                                        class="btn btn-sm btn-primary text-light rounded-pill"
-                                        onclick="return confirm('Tem certeza?')" style="background-color: #01356d">
-                                        <strong>Deletar</strong>
-                                    </button>
+                                        <span
+                                            class="{{ $sensor->status == 0 ? 'text-danger fw-bold' : 'text-secondary' }} me-2">
+                                            INATIVO
+                                        </span>
+
+                                        <div class="form-check form-switch m-0">
+                                            <input class="form-check-input" type="checkbox" role="switch"
+                                                id="switchCheckChecked_{{ $sensor->id }}"
+                                                wire:click="toggleStatus({{ $sensor->id }})" {{ $sensor->status == 1 ?
+                                            'checked' : '' }}>
+                                            <label class="form-check-label visually-hidden"
+                                                for="switchCheckChecked_{{ $sensor->id }}">Toggle Status</label>
+                                        </div>
+                                       <span
+                                            class="{{ $sensor->status == 1 ? 'text-primary fw-bold' : 'text-secondary' }} ms-2">
+                                            ATIVO
+                                        </span>
+                                    </div>
                                 </td>
                             </tr>
                             @empty
@@ -120,9 +120,9 @@
                 </div>
 
                 <div class="mt-3">
-                   
+
                     @if(isset($sensores) && method_exists($sensores, 'links'))
-                      
+
                     @endif
                 </div>
             </div>
