@@ -41,7 +41,7 @@
             <div class="card-body" style="background-color: #04bbdf">
 
                 @if (session()->has('message'))
-                <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                <div class="alert alert-success  alert-dismissible fade show" role="alert">
                     {{ session('message') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -89,12 +89,6 @@
 
                                 <td class="align-middle">
                                     <div class="d-flex align-items-center">
-
-                                        <span
-                                            class="{{ $sensor->status == 0 ? 'text-danger fw-bold' : 'text-secondary' }} me-2">
-                                            INATIVO
-                                        </span>
-
                                         <div class="form-check form-switch m-0">
                                             <input class="form-check-input" type="checkbox" role="switch"
                                                 id="switchCheckChecked_{{ $sensor->id }}"
@@ -103,9 +97,10 @@
                                             <label class="form-check-label visually-hidden"
                                                 for="switchCheckChecked_{{ $sensor->id }}">Toggle Status</label>
                                         </div>
-                                       <span
-                                            class="{{ $sensor->status == 1 ? 'text-primary fw-bold' : 'text-secondary' }} ms-2">
-                                            ATIVO
+                                        <span
+                                            class="{{ $sensor->status == 1 ? 'text-primary fw-bold' : 'text-danger fw-bold' }} ms-2" 
+                                            style="font-family:Arial, Helvetica, sans-serif">
+                                            {{ $sensor->status == 1 ? 'ATIVO' : 'INATIVO' }}
                                         </span>
                                     </div>
                                 </td>

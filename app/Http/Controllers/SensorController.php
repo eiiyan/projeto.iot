@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SensorController extends Controller
 {
-    public function show(Request $request)
+    public function visualizar(Request $request)
     {
         $sensor = Sensor::where('codigo', $request->codigo)->first();
 
@@ -15,10 +15,7 @@ class SensorController extends Controller
             return response()->json(['error' => 'sensor não encontrado'], 404);
         }
 
-        return response()->json([
-            'success' => 'sensor encontrado!',
-            'status' => $sensor->status
-        ], 201);
+        return $sensor->status;
     }
 
     public function update(Request $request)
@@ -42,7 +39,14 @@ class SensorController extends Controller
         ], 201);
     }
 
+    public function listar(Request $request)
+    {
+        $sensor = Sensor::all('codigo', 'tipo', 'status');
 
-
+        return response()->json([
+            'message' => "sensores encontrados!",
+            'data' => $sensor
+        ]);
+    }
 
 }

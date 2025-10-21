@@ -47,7 +47,7 @@ class SensorStatus extends Component
         
     }
     
-   
+    
     public function toggleStatus($sensorId)
     {
         
@@ -57,6 +57,5 @@ class SensorStatus extends Component
 
         
     }
-   
- 
+    
 }
