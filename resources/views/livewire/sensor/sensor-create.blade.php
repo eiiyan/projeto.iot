@@ -77,7 +77,7 @@
                         style="background-color: #04bbdf ; color:white" wire:loading.attr="disabled">
                         <strong><span>Cadastrar</span></strong>
                     </button>
-                    <a href="{{ route('sensores.index') }}" class="btn btn-danger rounded-pill text-light col-md-4">
+                    <a href="{{ route('sensores.index') }}" class="btn btn-secondary rounded-pill text-light col-md-4">
                         <b>Fechar<b></a>
                 </div>
 

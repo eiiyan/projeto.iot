@@ -1,9 +1,14 @@
 <div>
     <div class="d-flex justify-content-between
     align-items-center mb-3">
+        <span class="navbar-text me-3">
+            <h6>
+                Olá, {{ $user->name }}</h6>
+        </span>
         <h4 class="mb-0">Painel de Monitoramento</h4>
         <small class="text-muted">Atualizado há 2 minutos</small>
     </div>
+    
 
     <div class="row g-4 mb-4">
         <div class="col-md-6 col-xl-3">
@@ -66,9 +71,9 @@
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-white">
                     <h6 class="mb-0">Histórico de Temperatura</h6>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="graficoTemperatura" height="200"></canvas>
+                </div>
+                <div class="card-body">
+                    <canvas id="graficoTemperatura" height="200"></canvas>
                 </div>
             </div>
         </div>
@@ -76,10 +81,10 @@
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-white">
                     <h6 class="mb-0">Sensores por Tipo</h6>
-                
-                    </div>
-                    <div class="card-body">
-                        <canvas id="graficoSensores" height="200"></canvas>
+
+                </div>
+                <div class="card-body">
+                    <canvas id="graficoSensores" height="200"></canvas>
                 </div>
             </div>
         </div>

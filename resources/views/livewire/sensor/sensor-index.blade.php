@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-md-5 col-sm-6 text-end mt-3 mt-md-0">
-                <a href="{{ route('sensores.create') }}" class="btn btn-primary text-light rounded-pill">
+                <a href="{{ route('sensores.create') }}" class="btn btn text-light rounded-pill" style="background-color:#04bbdf">
                     <strong><i class="bi bi-plus-circle"></i> Novo Sensor</strong>
                 </a>
             </div>

@@ -20,19 +20,23 @@
                     <i class="bi bi-shield-lock-fill"></i>
                 </div>
                 <div>
-                    <h6 class="mb-0 fw-semibold">MonitorIoT</h6>
+
+                    <h6 class="mb-0 fw-semibold" class="nav-link">MonitorIoT</h6>
                 </div>
             </div>
 
             <div class="nav-section-title">Menu Principal</div>
 
             <nav class="nav flex-column px-2">
-                <a href="#" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
-                <a href="#" class="nav-link"><i class="bi bi-building"></i> Ambientes</a>
-                <a href="#" class="nav-link"><i class="bi bi-people"></i> Usuários</a>
+                <a href="{{ route('dashboard')}}" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                <a href="{{ route('ambientes.index')}}" class="nav-link"><i class="bi bi-building"></i> Ambientes</a>
+                <a href="{{ route('usuarios.index')}}" class="nav-link"><i class="bi bi-people"></i> Usuários</a>
                 <a href="#" class="nav-link"><i class="bi bi-exclamation-triangle"></i> Alertas</a>
                 <a href="#" class="nav-link"><i class="bi bi-gear"></i>Configurações</a>
+                
+
             </nav>
+           
 
             <div class="mt-auto px-3 py-4 border-top">
                 <div class="status-box">

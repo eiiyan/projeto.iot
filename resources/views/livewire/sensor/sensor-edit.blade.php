@@ -75,7 +75,7 @@
                             <button type="submit" class="btn text-light col-md-5 rounded-pill"
                                 style="background-color: #04bbdf"><strong>Atualizar</strong></button>
                             <a href="{{ route('sensores.index') }}"
-                                class="btn btn-danger rounded-pill text-light col-md-4">
+                                class="btn btn-secondary rounded-pill text-light col-md-4">
                                 <b>Fechar<b></a>
                         </div>
 
