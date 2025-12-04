@@ -28,11 +28,6 @@ class Dashboard extends Component
     { //popula todas as variáveis de cima(fazer cálculos corretos)
 
     }
-       public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login');
-    }
 
 
     public function render()
