@@ -2,11 +2,12 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
-
+    
     public $temperatura;
     public $luminosidade;
     public $umiade;
@@ -18,16 +19,20 @@ class Dashboard extends Component
     public $labelsSensores = [];
     public $dadosSensores = [];
 
-    public function mount(){
+    public function mount()
+    {
         $this->carregarDados();
     }
 
-    public function carregarDados(){ //popula todas as variáveis de cima(fazer cálculos corretos)
+    public function carregarDados()
+    { //popula todas as variáveis de cima(fazer cálculos corretos)
 
     }
- 
+
+
     public function render()
     {
-        return view('livewire.dashboard');
+        return view('livewire.dashboard' ,['user'=> Auth::user()
+    ]);
     }
 }

@@ -2,22 +2,24 @@
     <div class="container mt-4">
 
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-12">
                 <strong>
-                    <h2><i class="bi bi-collection-fill"></i> Registros
-                </strong></h2>
+                    <h2><i class="bi bi-phone-vibrate"></i> Sensores</h2>
+                </strong>
             </div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-3">
+        <div class="row mb-3 d-flex align-items-center justify-content-between">
+
+            <div class="col-md-4 col-sm-12">
                 <div class="input-group align-items-center p-1 bg-body-tertiary rounded-pill">
                     <input type="search" wire:model.debounce.300ms="search"
-                        class="form-control float-end mx-2 bg-transparent border border-0" style="widht: 230px"
-                        placeholder="Buscar registros..." wire:model.live="search">
+                        class="form-control float-end mx-2 bg-transparent border border-0"
+                        placeholder="Buscar sensores..." wire:model.live="search">
                     <i class="bi bi-search text-secondary p-1" id="toggleIcon"></i>
                 </div>
             </div>
+
             <div class="col-md-3 col-sm-6 mt-3 mt-md-0">
                 <select wire:model.live="perPage" class="form-select border border-primary rounded shadow"
                     style="color:black">
@@ -27,22 +29,25 @@
                     <option value="100">100 por página</option>
                 </select>
             </div>
-            <br>
 
+            <div class="col-md-5 col-sm-6 text-end mt-3 mt-md-0">
+                <a href="{{ route('sensores.create') }}" class="btn btn-primary text-light rounded-pill">
+                    <strong><i class="bi bi-plus-circle"></i> Novo Sensor</strong>
+                </a>
+            </div>
         </div>
-
+        <br>
         <div class="card bg-primary">
-
             <div class="card-body" style="background-color: #04bbdf">
 
-                @if(session()->has('message'))
-                <div class="alert alert-success  alert-dismissible fade show" role="alert">
+                @if (session()->has('message'))
+                <div class="alert alert-success  alert-dismissible fade show" role="alert">
                     {{ session('message') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
 
-                @if(session()->has('notUpdate'))
+                @if (session()->has('notUpdate'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     {{ session('message') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -67,36 +72,42 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Sensor_ID</th>
-                                <th>Valor</th>
-                                <th>Unidade</th>
-                                <th>Data e Hora</th>
-                                <th>Ações</th>
+
+                                <th>Código</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($registros as $registro)
+                            @forelse($sensores as $sensor)
                             <tr>
-                                <td>{{ $registro->id }}</td>
-                                <td>{{ $registro->sensor_id}}</td>
-                                <td>{{ $registro->valor }}</td>
-                                <td>{{ $registro->unidade }}</td>
-                                <td>{{ $registro->data_hora }}</td>
 
-                                <td>
+                                <td>{{ $sensor->codigo }}</td>
+                                <td>{{ $sensor->tipo }}</td>
 
 
-                                    <button wire:click="delete({{ $registro->id }})"
-                                        class="btn btn-sm btn-primary text-light rounded-pill"
-                                        onclick="return confirm('Tem certeza?')" style="background-color: #01356d">
-                                        <strong>Deletar</strong>
-                                    </button>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <div class="form-check form-switch m-0">
+                                            <input class="form-check-input" type="checkbox" role="switch"
+                                                id="switchCheckChecked_{{ $sensor->id }}"
+                                                wire:click="toggleStatus({{ $sensor->id }})" {{ $sensor->status == 1 ?
+                                            'checked' : '' }}>
+                                            <label class="form-check-label visually-hidden"
+                                                for="switchCheckChecked_{{ $sensor->id }}">Toggle Status</label>
+                                        </div>
+                                        <span
+                                            class="{{ $sensor->status == 1 ? 'text-primary fw-bold' : 'text-danger fw-bold' }} ms-2" 
+                                            style="font-family:Arial, Helvetica, sans-serif">
+                                            {{ $sensor->status == 1 ? 'ATIVO' : 'INATIVO' }}
+                                        </span>
+                                    </div>
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center">Nenhum registro encontrado.</td>
+                                <td colspan="7" class="text-center">Nenhum sensor encontrado.</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -105,8 +116,11 @@
 
                 <div class="mt-3">
 
+                    @if(isset($sensores) && method_exists($sensores, 'links'))
 
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+</div>

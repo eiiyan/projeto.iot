@@ -1,8 +1,9 @@
-<div class="container mt-4">
+<div>
+   <div class="container mt-4">
     
     <div class="row mb-3">
         <div class="col-12">
-            <strong><h2><i class="bi bi-houses"></i> Ambientes</h2></strong>
+            <strong><h2><i class="bi bi-person-fill"></i> Usuários</h2></strong>
         </div>
     </div>
 
@@ -13,7 +14,7 @@
                 <input type="search" 
                     wire:model.debounce.300ms="search" 
                     class="form-control float-end mx-2 bg-transparent border border-0"
-                    placeholder="Buscar ambientes..." 
+                    placeholder="Buscar usuários..." 
                     wire:model.live="search">
                 <i class="bi bi-search text-secondary p-1" id="toggleIcon"></i>
             </div>
@@ -30,8 +31,8 @@
         </div>
 
         <div class="col-md-5 col-sm-6 text-end mt-3 mt-md-0">
-            <a href="{{ route('ambientes.create') }}" class="btn btn text-light rounded-pill " style="background-color:#04bbdf">
-                <strong><i class="bi bi-plus-circle" ></i> Novo Ambiente</strong>
+            <a href="{{ route('usuarios.create') }}" class="btn btn text-light rounded-pill" style="background-color:#04bbdf">
+                <strong><i class="bi bi-plus-circle"></i> Novo Usuário</strong>
             </a>
         </div>
         
@@ -75,26 +76,20 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
-                            <th>Descrição</th>
-                            <th>Status</th>
+                            <th>E-mail</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($ambientes as $ambiente)
+                        @forelse($users as $user)
                             <tr>
-                                <td>{{ $ambiente->id }}</td>
-                                <td>{{ $ambiente->nome }}</td>
-                                <td>{{ $ambiente->descricao }}</td>
-                                <td>{{ $ambiente->status }}</td>
-                                
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>
-                                    <a href="{{ route('ambientes.edit', $ambiente->id) }}" 
-                                        class="btn btn-sm btn-primary text-light rounded-pill" style="background-color: #04bbdf">
-                                        <strong>Editar</strong>
-                                    </a>
+                                
 
-                                    <button wire:click="delete({{ $ambiente->id }})" 
+                                    <button wire:click="delete({{ $user->id }})" 
                                     class="btn btn-sm btn-primary text-light rounded-pill" onclick="return confirm('Tem certeza?')" style="background-color: #01356d">
                                         <strong>Deletar</strong>
                                     </button>
@@ -102,7 +97,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">Nenhum ambiente encontrado.</td>
+                                <td colspan="7" class="text-center">Nenhum usuário encontrado.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -110,10 +105,11 @@
             </div>
 
             <div class="mt-3">
-                @if(isset($ambientes) && method_exists($ambientes, 'links'))
+                @if(isset($users) && method_exists($users, 'links'))
                   
                 @endif
             </div>
         </div>
     </div>
+</div>
 </div>
